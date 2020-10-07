@@ -1,0 +1,1 @@
+# plantuml-generation-intellij-plugin

@@ -1,0 +1,41 @@
+<idea-plugin>
+  <id>com.kn.diagrams.generator.generator</id>
+  <name>PlantUML Diagram Generator</name>
+  <version>2021.1.0</version>
+  <vendor>Andreas Pfau</vendor>
+
+  <idea-version since-build="202"/>
+
+  <description>
+    This Plugin allows you to create an as-is 2D diagram of your code base. You can show only a specific area or specific classes of your code base by customizing the filter logic. The resulting diagram file is in text form (PlantUML) and can be included in the documentation (e.g. AsciiDoc), reviewed in a version control diff or manually adjusted.
+  </description>
+
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+  <depends>com.intellij.java</depends>
+
+  <actions>
+    <group>
+      <separator/>
+      <action id="GenerateFlowDiagramAction" class="com.kn.diagrams.generator.actions.GenerateFlowDiagramsAction" text="Generate Flow Diagram"/>
+      <action id="GenerateCallDiagramAction" class="com.kn.diagrams.generator.actions.GenerateCallDiagramsAction" text="Generate Call Diagrams"/>
+      <action id="GenerateStructureDiagramAction" class="com.kn.diagrams.generator.actions.GenerateStructureDiagramAction" text="Generate Structure Diagram"/>
+      <action id="RegenerateDiagramAction" class="com.kn.diagrams.generator.actions.RegenerateDiagramAction" text="Regenerate Diagrams"/>
+      <action id="RegenerateDiagramRecursiveAction" class="com.kn.diagrams.generator.actions.RegenerateDiagramRecursiveAction" text="Regenerate Diagrams Recursive"/>
+      <separator/>
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="first" />
+    </group>
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="Diagram Generation" icon="/plantuml_generator.svg" anchor="right" factoryClass="com.kn.diagrams.generator.sidebar.DiagramGeneratorConfigurationToolWindowFactory"/>
+
+    <applicationConfigurable instance="com.kn.diagrams.generator.settings.DiagramGeneratorSettingsPage"/>
+    <applicationService serviceImplementation="com.kn.diagrams.generator.settings.DiagramGenerationSettings"/>
+  </extensions>
+
+</idea-plugin>

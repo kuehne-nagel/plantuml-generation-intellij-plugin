@@ -1,0 +1,112 @@
+@startuml
+
+/' diagram meta data start
+config=FlowConfiguration;
+{
+  "rootMethod": "examples.flow.FlowService#save()",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 999,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "rootClass": "examples.flow.FlowService"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+createentity[
+	label="create entity"
+	shape=oval
+];
+
+displayerrormessage[
+	label="display error message"
+	shape=oval
+];
+
+isalreadysaved[
+	label="is already saved"
+	shape=diamond
+];
+
+isentityvalid[
+	label="is entity valid"
+	shape=diamond
+];
+
+saveentity[
+	label="save entity"
+	shape=oval
+];
+
+updateentity[
+	label="update entity"
+	shape=oval
+];
+
+'edges    
+isalreadysaved -> createentity[label=Yes];
+isalreadysaved -> updateentity[label=no];
+isentityvalid -> displayerrormessage[label=No];
+isentityvalid -> isalreadysaved[label=Yes];
+saveentity -> isentityvalid;
+    
+}
+@enduml

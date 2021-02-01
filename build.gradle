@@ -1,0 +1,46 @@
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.6.5'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+}
+
+group 'com.kn.diagrams.generator.generator'
+version '2021.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:"
+
+    testImplementation 'junit:junit:4.12'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+intellij {
+    version '2020.3.1'
+    plugins 'com.intellij.java'
+}
+
+prepareSandbox {
+
+}
+buildSearchableOptions.enabled = false
+
+runIde{
+    maxHeapSize = "8G"
+}
+
+

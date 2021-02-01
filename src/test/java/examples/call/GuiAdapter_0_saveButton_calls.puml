@@ -1,0 +1,166 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "examples.call.adapter.GuiAdapter#saveButton()",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "examples.call",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": false,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "examples.call.adapter.GuiAdapter"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1150508209 { 
+   	label=adapter
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1708413794 { 
+   	label=GuiAdapter
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   GuiAdapter879624892XXXsaveButton0[
+	label="+ saveButton()"
+	style=filled
+	fillcolor=white
+	tooltip="GuiAdapter
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+} 
+
+subgraph cluster_1326197564 { 
+   	label=domain
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_510937130 { 
+   	label=Service
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Service1871648721XXXnotifyChanges0[
+	label="- notifyChanges()"
+	style=filled
+	fillcolor=white
+	tooltip="Service
+
+null"
+	fontcolor=red
+];
+
+Service1871648721XXXsave1535243398[
+	label="+ save(a: Entity, b: Entity): Entity"
+	style=filled
+	fillcolor=white
+	tooltip="Service
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_583251319 { 
+   	label=Repository
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   Repository1871648721XXXsave0[
+	label="+ save()"
+	style=filled
+	fillcolor=white
+	tooltip="Repository
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+
+'edges    
+GuiAdapter879624892XXXsaveButton0 -> Service1871648721XXXsave1535243398;
+Service1871648721XXXsave1535243398 -> Repository1871648721XXXsave0;
+Service1871648721XXXsave1535243398 -> Service1871648721XXXnotifyChanges0;
+    
+}
+@enduml
